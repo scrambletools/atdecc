@@ -40,6 +40,9 @@ void Adpdu::serialize(uint8_t* buffer) const noexcept
     // Offset to keep track of where in the buffer we're writing
     size_t offset = 0;
 
+    // Reserved fields
+    uint32_t reserved = 0;
+
     // Copy fields into the buffer in the correct order
     memcpy(buffer + offset, &messageType, sizeof(messageType));
     offset += sizeof(messageType);
@@ -65,11 +68,15 @@ void Adpdu::serialize(uint8_t* buffer) const noexcept
     offset += sizeof(gptpGrandmasterID);
     memcpy(buffer + offset, &gptpDomainNumber, sizeof(gptpDomainNumber));
     offset += sizeof(gptpDomainNumber);
+    memcpy(buffer + offset, &reserved, (3)); // 24 bits reserved
+    offset += (3);
     memcpy(buffer + offset, &identifyControlIndex, sizeof(identifyControlIndex));
     offset += sizeof(identifyControlIndex);
     memcpy(buffer + offset, &interfaceIndex, sizeof(interfaceIndex));
     offset += sizeof(interfaceIndex);
     memcpy(buffer + offset, &associationID, sizeof(associationID));
+    offset += sizeof(associationID);
+    memcpy(buffer + offset, &reserved, (4)); // 32 bits reserved
 }
 
 // Deserialize the ADPDU from a buffer
@@ -106,11 +113,13 @@ void Adpdu::deserialize(const uint8_t* buffer)
     offset += sizeof(gptpGrandmasterID);
     memcpy(&gptpDomainNumber, buffer + offset, sizeof(gptpDomainNumber));
     offset += sizeof(gptpDomainNumber);
+    offset += (3); // 24 bits reserved
     memcpy(&identifyControlIndex, buffer + offset, sizeof(identifyControlIndex));
     offset += sizeof(identifyControlIndex);
     memcpy(&interfaceIndex, buffer + offset, sizeof(interfaceIndex));
     offset += sizeof(interfaceIndex);
     memcpy(&associationID, buffer + offset, sizeof(associationID));
+    // 32 bits reserved
 }
 
 // Copy method to create a deep copy of the current ADPDU instance

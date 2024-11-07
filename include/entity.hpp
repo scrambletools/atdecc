@@ -81,6 +81,4 @@ private:
     InterfaceInformation _interfaceInformation;
 };
 
-
-
 #endif /* COMPONENTS_ATDECC_INCLUDE_ENTITY_HPP_ */

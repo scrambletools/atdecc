@@ -16,7 +16,7 @@
 #include <string.h>  // For memcpy, strcmp
 #include <vector>
 #include <type_traits>
-#include <utility> // for std::make_pair
+#include <utility>   // for std::make_pair
 #include <esp_log.h> // for ESP_LOGE
 #include "uniqueIdentifier.hpp"
 
@@ -67,46 +67,46 @@ using BridgeIdentifier = uint64_t;
 // Simplified Descriptor Type Enum - Clause 7.2
 enum class DescriptorType : uint16_t
 {
-	Entity = 0x0000,
-	Configuration = 0x0001,
-	AudioUnit = 0x0002,
-	VideoUnit = 0x0003,
-	SensorUnit = 0x0004,
-	StreamInput = 0x0005,
-	StreamOutput = 0x0006,
-	JackInput = 0x0007,
-	JackOutput = 0x0008,
-	AvbInterface = 0x0009,
-	ClockSource = 0x000a,
-	MemoryObject = 0x000b,
-	Locale = 0x000c,
-	Strings = 0x000d,
-	StreamPortInput = 0x000e,
-	StreamPortOutput = 0x000f,
-	ExternalPortInput = 0x0010,
-	ExternalPortOutput = 0x0011,
-	InternalPortInput = 0x0012,
-	InternalPortOutput = 0x0013,
-	AudioCluster = 0x0014,
-	VideoCluster = 0x0015,
-	SensorCluster = 0x0016,
-	AudioMap = 0x0017,
-	VideoMap = 0x0018,
-	SensorMap = 0x0019,
-	Control = 0x001a,
-	SignalSelector = 0x001b,
-	Mixer = 0x001c,
-	Matrix = 0x001d,
-	MatrixSignal = 0x001e,
-	SignalSplitter = 0x001f,
-	SignalCombiner = 0x0020,
+	Entity =              0x0000,
+	Configuration =       0x0001,
+	AudioUnit =           0x0002,
+	VideoUnit =           0x0003,
+	SensorUnit =          0x0004,
+	StreamInput =         0x0005,
+	StreamOutput =        0x0006,
+	JackInput =           0x0007,
+	JackOutput =          0x0008,
+	AvbInterface =        0x0009,
+	ClockSource =         0x000a,
+	MemoryObject =        0x000b,
+	Locale =              0x000c,
+	Strings =             0x000d,
+	StreamPortInput =     0x000e,
+	StreamPortOutput =    0x000f,
+	ExternalPortInput =   0x0010,
+	ExternalPortOutput =  0x0011,
+	InternalPortInput =   0x0012,
+	InternalPortOutput =  0x0013,
+	AudioCluster =        0x0014,
+	VideoCluster =        0x0015,
+	SensorCluster =       0x0016,
+	AudioMap =            0x0017,
+	VideoMap =            0x0018,
+	SensorMap =           0x0019,
+	Control =             0x001a,
+	SignalSelector =      0x001b,
+	Mixer =               0x001c,
+	Matrix =              0x001d,
+	MatrixSignal =        0x001e,
+	SignalSplitter =      0x001f,
+	SignalCombiner =      0x0020,
 	SignalDemultiplexer = 0x0021,
-	SignalMultiplexer = 0x0022,
-	SignalTranscoder = 0x0023,
-	ClockDomain = 0x0024,
-	ControlBlock = 0x0025,
+	SignalMultiplexer =   0x0022,
+	SignalTranscoder =    0x0023,
+	ClockDomain =         0x0024,
+	ControlBlock =        0x0025,
 	/* 0026 to fffe reserved for future use */
-	Invalid = 0xffff
+	Invalid =             0xffff
 };
 
 constexpr bool operator!(DescriptorType const lhs)
@@ -608,63 +608,63 @@ public:
     {
         // Unitless Quantities
         Unitless = 0x00,
-        Count = 0x01,
-        Percent = 0x02,
-        FStop = 0x03,
+        Count =    0x01,
+        Percent =  0x02,
+        FStop =    0x03,
 
         // Time Quantities
         Seconds = 0x08,
         Minutes = 0x09,
-        Hours = 0x0a,
-        Days = 0x0b,
-        Months = 0x0c,
-        Years = 0x0d,
+        Hours =   0x0a,
+        Days =    0x0b,
+        Months =  0x0c,
+        Years =   0x0d,
         Samples = 0x0e,
-        Frames = 0x0f,
+        Frames =  0x0f,
 
         // Frequency Quantities
-        Hertz = 0x10,
+        Hertz =     0x10,
         Semitones = 0x11,
-        Cents = 0x12,
-        Octaves = 0x13,
-        Fps = 0x14,
+        Cents =     0x12,
+        Octaves =   0x13,
+        Fps =       0x14,
 
         // Distance Quantities
-        Metres = 0x18,
+        Metres =    0x18,
 
         // Temperature Quantities
-        Kelvin = 0x20,
+        Kelvin =    0x20,
 
         // Mass Quantities
-        Grams = 0x28,
+        Grams =     0x28,
 
         // Voltage Quantities
-        Volts = 0x30,
-        Dbv = 0x31,
-        Dbu = 0x32,
+        Volts =     0x30,
+        Dbv =       0x31,
+        Dbu =       0x32,
 
         // Current Quantities
-        Amps = 0x38,
+        Amps =      0x38,
 
         // Power Quantities
-        Watts = 0x40,
-        Dbm = 0x41,
-        Dbw = 0x42,
+        Watts =     0x40,
+        Dbm =       0x41,
+        Dbw =       0x42,
 
         // Pressure Quantities
-        Pascals = 0x48,
+        Pascals =   0x48,
 
         // Memory Quantities
-        Bits = 0x50,
-        Bytes = 0x51,
+        Bits =      0x50,
+        Bytes =     0x51,
         KibiBytes = 0x52,
         MebiBytes = 0x53,
         GibiBytes = 0x54,
         TebiBytes = 0x55,
 
         // Bandwidth Quantities
-        BitsPerSec = 0x58,
-        BytesPerSec = 0x59,
+        BitsPerSec =      0x58,
+        BytesPerSec =     0x59,
         KibiBytesPerSec = 0x5a,
         MebiBytesPerSec = 0x5b,
         GibiBytesPerSec = 0x5c,
@@ -674,52 +674,52 @@ public:
         Candelas = 0x60,
 
         // Energy Quantities
-        Joules = 0x68,
+        Joules =   0x68,
 
         // Angle Quantities
-        Radians = 0x70,
+        Radians =  0x70,
 
         // Force Quantities
-        Newtons = 0x78,
+        Newtons =  0x78,
 
         // Resistance Quantities
-        Ohms = 0x80,
+        Ohms =     0x80,
 
         // Velocity Quantities
-        MetresPerSec = 0x88,
+        MetresPerSec =  0x88,
         RadiansPerSec = 0x89,
 
         // Acceleration Quantities
-        MetresPerSecSquared = 0x90,
+        MetresPerSecSquared =  0x90,
         RadiansPerSecSquared = 0x91,
 
         // Magnetic Flux and Fields Quantities
-        Teslas = 0x98,
-        Webers = 0x99,
-        AmpsPerMetre = 0x9a,
+        Teslas =        0x98,
+        Webers =        0x99,
+        AmpsPerMetre =  0x9a,
 
         // Area Quantities
         MetresSquared = 0xa0,
 
         // Volume Quantities
-        MetresCubed = 0xa8,
-        Litres = 0xa9,
+        MetresCubed =   0xa8,
+        Litres =        0xa9,
 
         // Level and Loudness Quantities
-        Db = 0xb0,
-        DbPeak = 0xb1,
-        DbRms = 0xb2,
-        Dbfs = 0xb3,
+        Db =       0xb0,
+        DbPeak =   0xb1,
+        DbRms =    0xb2,
+        Dbfs =     0xb3,
         DbfsPeak = 0xb4,
-        DbfsRms = 0xb5,
-        Dbtp = 0xb6,
-        DbSplA = 0xb7,
-        DbZ = 0xb8,
-        DbSplC = 0xb9,
-        DbSpl = 0xba,
-        Lu = 0xbb,
-        Lufs = 0xbc,
-        DbA = 0xbd,
+        DbfsRms =  0xb5,
+        Dbtp =     0xb6,
+        DbSplA =   0xb7,
+        DbZ =      0xb8,
+        DbSplC =   0xb9,
+        DbSpl =    0xba,
+        Lu =       0xbb,
+        Lufs =     0xbc,
+        DbA =      0xbd,
     };
 
     /** Default constructor. */
@@ -811,40 +811,40 @@ private:
 /** MemoryObject Type - Clause 7.2.10.1 */
 enum class MemoryObjectType : uint16_t
 {
-	FirmwareImage = 0x0000,
-	VendorSpecific = 0x0001,
-	CrashDump = 0x0002,
-	LogObject = 0x0003,
+	FirmwareImage =     0x0000,
+	VendorSpecific =    0x0001,
+	CrashDump =         0x0002,
+	LogObject =         0x0003,
 	AutostartSettings = 0x0004,
-	SnapshotSettings = 0x0005,
-	SvgManufacturer = 0x0006,
-	SvgEntity = 0x0007,
-	SvgGeneric = 0x0008,
-	PngManufacturer = 0x0009,
-	PngEntity = 0x000a,
-	PngGeneric = 0x000b,
-	DaeManufacturer = 0x000c,
-	DaeEntity = 0x000d,
-	DaeGeneric = 0x000e,
+	SnapshotSettings =  0x0005,
+	SvgManufacturer =   0x0006,
+	SvgEntity =         0x0007,
+	SvgGeneric =        0x0008,
+	PngManufacturer =   0x0009,
+	PngEntity =         0x000a,
+	PngGeneric =        0x000b,
+	DaeManufacturer =   0x000c,
+	DaeEntity =         0x000d,
+	DaeGeneric =        0x000e,
 	/* 000f to ffff reserved for future use */
 };
 
 enum class MemoryObjectOperationType : uint16_t
 {
-	Store = 0x0000,
+	Store =          0x0000,
 	StoreAndReboot = 0x0001,
-	Read = 0x0002,
-	Erase = 0x0003,
-	Upload = 0x0004,
+	Read =           0x0002,
+	Erase =          0x0003,
+	Upload =         0x0004,
 	/* 0005 to ffff reserved for future use */
 };
 
 enum class AudioClusterFormat : uint8_t
 {
 	Iec60958 = 0x00,
-	Mbla = 0x40,
-	Midi = 0x80,
-	Smpte = 0x88,
+	Mbla =     0x40,
+	Midi =     0x80,
+	Smpte =    0x88,
 };
 
 class ControlValueType final
@@ -855,44 +855,44 @@ public:
     // ControlValueType Enum Definition
     enum class Type : uint16_t
     {
-        ControlLinearInt8 = 0x0000,
-        ControlLinearUInt8 = 0x0001,
-        ControlLinearInt16 = 0x0002,
-        ControlLinearUInt16 = 0x0003,
-        ControlLinearInt32 = 0x0004,
-        ControlLinearUInt32 = 0x0005,
-        ControlLinearInt64 = 0x0006,
-        ControlLinearUInt64 = 0x0007,
-        ControlLinearFloat = 0x0008,
-        ControlLinearDouble = 0x0009,
-        ControlSelectorInt8 = 0x000a,
-        ControlSelectorUInt8 = 0x000b,
-        ControlSelectorInt16 = 0x000c,
+        ControlLinearInt8 =     0x0000,
+        ControlLinearUInt8 =    0x0001,
+        ControlLinearInt16 =    0x0002,
+        ControlLinearUInt16 =   0x0003,
+        ControlLinearInt32 =    0x0004,
+        ControlLinearUInt32 =   0x0005,
+        ControlLinearInt64 =    0x0006,
+        ControlLinearUInt64 =   0x0007,
+        ControlLinearFloat =    0x0008,
+        ControlLinearDouble =   0x0009,
+        ControlSelectorInt8 =   0x000a,
+        ControlSelectorUInt8 =  0x000b,
+        ControlSelectorInt16 =  0x000c,
         ControlSelectorUInt16 = 0x000d,
-        ControlSelectorInt32 = 0x000e,
+        ControlSelectorInt32 =  0x000e,
         ControlSelectorUInt32 = 0x000f,
-        ControlSelectorInt64 = 0x0010,
+        ControlSelectorInt64 =  0x0010,
         ControlSelectorUInt64 = 0x0011,
-        ControlSelectorFloat = 0x0012,
+        ControlSelectorFloat =  0x0012,
         ControlSelectorDouble = 0x0013,
         ControlSelectorString = 0x0014,
-        ControlArrayInt8 = 0x0015,
-        ControlArrayUInt8 = 0x0016,
-        ControlArrayInt16 = 0x0017,
-        ControlArrayUInt16 = 0x0018,
-        ControlArrayInt32 = 0x0019,
-        ControlArrayUInt32 = 0x001a,
-        ControlArrayInt64 = 0x001b,
-        ControlArrayUInt64 = 0x001c,
-        ControlArrayFloat = 0x001d,
-        ControlArrayDouble = 0x001e,
-        ControlUtf8 = 0x001f,
-        ControlBodePlot = 0x0020,
-        ControlSmpteTime = 0x0021,
-        ControlSampleRate = 0x0022,
-        ControlGptpTime = 0x0023,
-        ControlVendor = 0x3ffe,
-        Expansion = 0x3fff,
+        ControlArrayInt8 =      0x0015,
+        ControlArrayUInt8 =     0x0016,
+        ControlArrayInt16 =     0x0017,
+        ControlArrayUInt16 =    0x0018,
+        ControlArrayInt32 =     0x0019,
+        ControlArrayUInt32 =    0x001a,
+        ControlArrayInt64 =     0x001b,
+        ControlArrayUInt64 =    0x001c,
+        ControlArrayFloat =     0x001d,
+        ControlArrayDouble =    0x001e,
+        ControlUtf8 =           0x001f,
+        ControlBodePlot =       0x0020,
+        ControlSmpteTime =      0x0021,
+        ControlSampleRate =     0x0022,
+        ControlGptpTime =       0x0023,
+        ControlVendor =         0x3ffe,
+        Expansion =             0x3fff,
     };
 
     /** Default constructor. */
@@ -1160,45 +1160,45 @@ using AudioMappings = std::vector<AudioMapping>;
 // Simplified JackType Enum
 enum class JackType : uint16_t
 {
-    Speaker = 0x0000,
-    Headphone = 0x0001,
-    AnalogMicrophone = 0x0002,
-    Spdif = 0x0003,
-    Adat = 0x0004,
-    TdIf = 0x0005,
-    Madi = 0x0006,
-    UnbalancedAnalog = 0x0007,
-    BalancedAnalog = 0x0008,
-    Digital = 0x0009,
-    Midi = 0x000a,
-    AesEbu = 0x000b,
-    CompositeVideo = 0x000c,
-    SVhsVideo = 0x000d,
-    ComponentVideo = 0x000e,
-    Dvi = 0x000f,
-    Hdmi = 0x0010,
-    Udi = 0x0011,
-    DisplayPort = 0x0012,
-    Antenna = 0x0013,
-    AnalogTuner = 0x0014,
-    Ethernet = 0x0015,
-    Wifi = 0x0016,
-    Usb = 0x0017,
-    Pci = 0x0018,
-    PciE = 0x0019,
-    Scsi = 0x001a,
-    Ata = 0x001b,
-    Imager = 0x001c,
-    Ir = 0x001d,
-    Thunderbolt = 0x001e,
-    Sata = 0x001f,
-    SmpteLtc = 0x0020,
+    Speaker =           0x0000,
+    Headphone =         0x0001,
+    AnalogMicrophone =  0x0002,
+    Spdif =             0x0003,
+    Adat =              0x0004,
+    TdIf =              0x0005,
+    Madi =              0x0006,
+    UnbalancedAnalog =  0x0007,
+    BalancedAnalog =    0x0008,
+    Digital =           0x0009,
+    Midi =              0x000a,
+    AesEbu =            0x000b,
+    CompositeVideo =    0x000c,
+    SVhsVideo =         0x000d,
+    ComponentVideo =    0x000e,
+    Dvi =               0x000f,
+    Hdmi =              0x0010,
+    Udi =               0x0011,
+    DisplayPort =       0x0012,
+    Antenna =           0x0013,
+    AnalogTuner =       0x0014,
+    Ethernet =          0x0015,
+    Wifi =              0x0016,
+    Usb =               0x0017,
+    Pci =               0x0018,
+    PciE =              0x0019,
+    Scsi =              0x001a,
+    Ata =               0x001b,
+    Imager =            0x001c,
+    Ir =                0x001d,
+    Thunderbolt =       0x001e,
+    Sata =              0x001f,
+    SmpteLtc =          0x0020,
     DigitalMicrophone = 0x0021,
-    AudioMediaClock = 0x0022,
-    VideoMediaClock = 0x0023,
-    GnssClock = 0x0024,
-    Pps = 0x0025,
-    Expansion = 0xffff
+    AudioMediaClock =   0x0022,
+    VideoMediaClock =   0x0023,
+    GnssClock =         0x0024,
+    Pps =               0x0025,
+    Expansion =         0xffff
 };
 
 // Structure for MsrpMapping
@@ -1245,35 +1245,35 @@ inline bool operator==(const StreamIdentification &lhs, const StreamIdentificati
 // Simplified enum class for ProbingStatus
 enum ProbingStatus : uint8_t
 {
-    Disabled = 0x00,    /** The sink is not probing because it is not bound. */
-    Passive = 0x01,     /** The sink is probing passively. It waits until the bound talker has been discovered. */
-    Active = 0x02,      /** The sink is probing actively. It is querying the stream parameters to the talker. */
+    Disabled =  0x00,    /** The sink is not probing because it is not bound. */
+    Passive =   0x01,     /** The sink is probing passively. It waits until the bound talker has been discovered. */
+    Active =    0x02,      /** The sink is probing actively. It is querying the stream parameters to the talker. */
     Completed = 0x03,   /** The sink is not probing because it is settled. */
 };
 
 // MSRP Failure Code Enum - Simplified
 enum MsrpFailureCode : uint8_t
 {
-    NoFailure = 0,
-    InsufficientBandwidth = 1,
-    InsufficientResources = 2,
-    InsufficientTrafficClassBandwidth = 3,
-    StreamIDInUse = 4,
-    StreamDestinationAddressInUse = 5,
-    StreamPreemptedByHigherRank = 6,
-    LatencyHasChanged = 7,
-    EgressPortNotAVBCapable = 8,
-    UseDifferentDestinationAddress = 9,
-    OutOfMSRPResources = 10,
-    OutOfMMRPResources = 11,
-    CannotStoreDestinationAddress = 12,
-    PriorityIsNotAnSRClass = 13,
-    MaxFrameSizeTooLarge = 14,
-    MaxFanInPortsLimitReached = 15,
-    FirstValueChangedForStreamID = 16,
-    VlanBlockedOnEgress = 17,
-    VlanTaggingDisabledOnEgress = 18,
-    SrClassPriorityMismatch = 19,
+    NoFailure =                          0,
+    InsufficientBandwidth =              1,
+    InsufficientResources =              2,
+    InsufficientTrafficClassBandwidth =  3,
+    StreamIDInUse =                      4,
+    StreamDestinationAddressInUse =      5,
+    StreamPreemptedByHigherRank =        6,
+    LatencyHasChanged =                  7,
+    EgressPortNotAVBCapable =            8,
+    UseDifferentDestinationAddress =     9,
+    OutOfMSRPResources =                10,
+    OutOfMMRPResources =                11,
+    CannotStoreDestinationAddress =     12,
+    PriorityIsNotAnSRClass =            13,
+    MaxFrameSizeTooLarge =              14,
+    MaxFanInPortsLimitReached =         15,
+    FirstValueChangedForStreamID =      16,
+    VlanBlockedOnEgress =               17,
+    VlanTaggingDisabledOnEgress =       18,
+    SrClassPriorityMismatch =           19,
 };
 
 // Function to print AtdeccFixedString
@@ -1284,79 +1284,79 @@ inline void print_atdecc_string(const AtdeccFixedString &str)
 
 enum class StandardControlType : uint64_t
 {
-	Enable = 0x90e0f00000000000,
-	Identify = 0x90e0f00000000001,
-	Mute = 0x90e0f00000000002,
-	Invert = 0x90e0f00000000003,
-	Gain = 0x90e0f00000000004,
-	Attenuate = 0x90e0f00000000005,
-	Delay = 0x90e0f00000000006,
-	SrcMode = 0x90e0f00000000007,
-	Snapshot = 0x90e0f00000000008,
-	PowLineFreq = 0x90e0f00000000009,
-	PowerStatus = 0x90e0f0000000000a,
-	FanStatus = 0x90e0f0000000000b,
-	Temperature = 0x90e0f0000000000c,
-	Altitude = 0x90e0f0000000000d,
+	Enable =           0x90e0f00000000000,
+	Identify =         0x90e0f00000000001,
+	Mute =             0x90e0f00000000002,
+	Invert =           0x90e0f00000000003,
+	Gain =             0x90e0f00000000004,
+	Attenuate =        0x90e0f00000000005,
+	Delay =            0x90e0f00000000006,
+	SrcMode =          0x90e0f00000000007,
+	Snapshot =         0x90e0f00000000008,
+	PowLineFreq =      0x90e0f00000000009,
+	PowerStatus =      0x90e0f0000000000a,
+	FanStatus =        0x90e0f0000000000b,
+	Temperature =      0x90e0f0000000000c,
+	Altitude =         0x90e0f0000000000d,
 	AbsoluteHumidity = 0x90e0f0000000000e,
 	RelativeHumidity = 0x90e0f0000000000f,
-	Orientation = 0x90e0f00000000010,
-	Velocity = 0x90e0f00000000011,
-	Acceleration = 0x90e0f00000000012,
-	FilterResponse = 0x90e0f00000000013,
+	Orientation =      0x90e0f00000000010,
+	Velocity =         0x90e0f00000000011,
+	Acceleration =     0x90e0f00000000012,
+	FilterResponse =   0x90e0f00000000013,
 	/* 0x90e0f00000000014 to 0x90e0f0000000ffff reserved for future use */
-	Panpot = 0x90e0f00000010000,
-	Phantom = 0x90e0f00000010001,
-	AudioScale = 0x90e0f00000010002,
-	AudioMeters = 0x90e0f00000010003,
-	AudioSpectrum = 0x90e0f00000010004,
+	Panpot =           0x90e0f00000010000,
+	Phantom =          0x90e0f00000010001,
+	AudioScale =       0x90e0f00000010002,
+	AudioMeters =      0x90e0f00000010003,
+	AudioSpectrum =    0x90e0f00000010004,
 	/* 0x90e0f00000010005 to 0x90e0f0000001ffff reserved for future use */
-	ScanningMode = 0x90e0f00000020000,
-	AutoExpMode = 0x90e0f00000020001,
-	AutoExpPrio = 0x90e0f00000020002,
-	ExpTime = 0x90e0f00000020003,
-	Focus = 0x90e0f00000020004,
-	FocusAuto = 0x90e0f00000020005,
-	Iris = 0x90e0f00000020006,
-	Zoom = 0x90e0f00000020007,
-	Privacy = 0x90e0f00000020008,
-	Backlight = 0x90e0f00000020009,
-	Brightness = 0x90e0f0000002000a,
-	Contrast = 0x90e0f0000002000b,
-	Hue = 0x90e0f0000002000c,
-	Saturation = 0x90e0f0000002000d,
-	Sharpness = 0x90e0f0000002000e,
-	Gamma = 0x90e0f0000002000f,
-	WhiteBalTemp = 0x90e0f00000020010,
+	ScanningMode =     0x90e0f00000020000,
+	AutoExpMode =      0x90e0f00000020001,
+	AutoExpPrio =      0x90e0f00000020002,
+	ExpTime =          0x90e0f00000020003,
+	Focus =            0x90e0f00000020004,
+	FocusAuto =        0x90e0f00000020005,
+	Iris =             0x90e0f00000020006,
+	Zoom =             0x90e0f00000020007,
+	Privacy =          0x90e0f00000020008,
+	Backlight =        0x90e0f00000020009,
+	Brightness =       0x90e0f0000002000a,
+	Contrast =         0x90e0f0000002000b,
+	Hue =              0x90e0f0000002000c,
+	Saturation =       0x90e0f0000002000d,
+	Sharpness =        0x90e0f0000002000e,
+	Gamma =            0x90e0f0000002000f,
+	WhiteBalTemp =     0x90e0f00000020010,
 	WhiteBalTempAuto = 0x90e0f00000020011,
-	WhiteBalComp = 0x90e0f00000020012,
+	WhiteBalComp =     0x90e0f00000020012,
 	WhiteBalCompAuto = 0x90e0f00000020013,
-	DigitalZoom = 0x90e0f00000020014,
+	DigitalZoom =      0x90e0f00000020014,
 	/* 0x90e0f00000020015 to 0x90e0f0000002ffff reserved for future use */
-	MediaPlaylist = 0x90e0f00000030000,
-	MediaPlaylistName = 0x90e0f00000030001,
-	MediaDisk = 0x90e0f00000030002,
-	MediaDiskName = 0x90e0f00000030003,
-	MediaTrack = 0x90e0f00000030004,
-	MediaTrackName = 0x90e0f00000030005,
-	MediaSpeed = 0x90e0f00000030006,
-	MediaSamplePosition = 0x90e0f00000030007,
+	MediaPlaylist =          0x90e0f00000030000,
+	MediaPlaylistName =      0x90e0f00000030001,
+	MediaDisk =              0x90e0f00000030002,
+	MediaDiskName =          0x90e0f00000030003,
+	MediaTrack =             0x90e0f00000030004,
+	MediaTrackName =         0x90e0f00000030005,
+	MediaSpeed =             0x90e0f00000030006,
+	MediaSamplePosition =    0x90e0f00000030007,
 	MediaPlaybackTransport = 0x90e0f00000030008,
-	MediaRecordTransport = 0x90e0f00000030009,
+	MediaRecordTransport =   0x90e0f00000030009,
 	/* 0x90e0f0000003000a to 0x90e0f0000003ffff reserved for future use */
-	Frequency = 0x90e0f00000040000,
-	Modulation = 0x90e0f00000040001,
-	Polarization = 0x90e0f00000040002,
+	Frequency =              0x90e0f00000040000,
+	Modulation =             0x90e0f00000040001,
+	Polarization =           0x90e0f00000040002,
 	/* 0x90e0f00000040003 to 0x90e0f0ffffffffff reserved for future use */
 };
 
 enum class ClockSourceType : uint16_t
 {
-	Internal = 0x0000,
-	External = 0x0001,
+	Internal =    0x0000,
+	External =    0x0001,
 	InputStream = 0x0002,
 	/* 0003 to fffe reserved for future use */
-	Expansion = 0xffff
+	Expansion =   0xffff
 };
 
 /** GET_AS_PATH Dynamic Information - Clause 7.4.41.2 */

@@ -5,7 +5,7 @@
 #include <string>
 #include "protocolDefines.hpp"
 
-// Minimal implementation for ADPDU without AVTPDU for ESP-IDF
+// Minimal implementation of ADPDU for ESP-IDF
 class Adpdu
 {
 public:
@@ -20,7 +20,7 @@ public:
 
     // Destructor
     ~Adpdu() noexcept;
-
+    
     // Setters for ADPDU fields
     void setMessageType(uint8_t messageType) noexcept { this->messageType = static_cast<uint8_t>(messageType); }
     void setValidTime(uint8_t validTime) noexcept { this->validTime = validTime; }
@@ -77,8 +77,8 @@ public:
 
 //private:
     // ADPDU header fields
-    uint8_t messageType = 0;
-    uint8_t validTime = 0;
+    uint8_t  messageType = 0; // 4 bits
+    uint8_t  validTime = 0; // 5 bits
     uint64_t entityID = 0;
     uint64_t entityModelID = 0;
     uint32_t entityCapabilities = 0;
@@ -88,8 +88,10 @@ public:
     uint16_t listenerCapabilities = 0;
     uint32_t availableIndex = 0;
     uint64_t gptpGrandmasterID = 0;
-    uint8_t gptpDomainNumber = 0;
+    uint8_t  gptpDomainNumber = 0;
+    // reserved 24 bits here
     uint16_t identifyControlIndex = 0;
     uint16_t interfaceIndex = 0;
     uint64_t associationID = 0;
+    // reserved 32 bits here
 };
