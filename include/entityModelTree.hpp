@@ -5,7 +5,6 @@
 
 #include "entityModelTreeDynamic.hpp"
 #include "entityModelTreeStatic.hpp"
-
 #include <map>
 #include <set>
 

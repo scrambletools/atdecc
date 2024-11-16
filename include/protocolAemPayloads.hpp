@@ -8,7 +8,6 @@
 #include "protocolAemPayloadSizes.hpp"
 #include "entity.hpp"
 #include "entityModel.hpp"
-#include "entityModelTypes.hpp"
 #include "protocolDefines.hpp"
 #include <cstdint>
 #include <tuple>

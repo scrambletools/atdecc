@@ -7,7 +7,6 @@
 #include "uniqueIdentifier.hpp"
 #include "protocolDefines.hpp"
 #include "entityModelTypes.hpp"
-
 #include <cstdint>
 #include <cstring>
 #include <unordered_map>
@@ -17,8 +16,6 @@
 #define ATDECC_MAX_FORMATS 10
 #define ATDECC_MAX_SAMPLING_RATES 10
 #define ATDECC_MAX_DESCRIPTOR_TYPES 15
-
-using MacAddress = uint8_t[6];
 
 /** ENTITY Descriptor - Clause 7.2.1 */
 struct EntityDescriptor

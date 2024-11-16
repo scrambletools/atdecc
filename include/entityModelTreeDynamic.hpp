@@ -4,7 +4,6 @@
 #pragma once
 
 #include "entityModelTreeCommon.hpp"
-
 #include <unordered_map>
 #include <cstdint>
 #include <map>

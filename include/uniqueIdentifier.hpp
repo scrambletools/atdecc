@@ -1,3 +1,6 @@
+#ifndef COMPONENTS_ATDECC_INCLUDE_UNIQUEIDENTIFIER_HPP_
+#define COMPONENTS_ATDECC_INCLUDE_UNIQUEIDENTIFIER_HPP_
+
 #pragma once
 
 #include <stdint.h>  // Use standard C headers for compatibility
@@ -144,3 +147,5 @@ private:
     static constexpr value_type UninitializedIdentifierValue = 0xFFFFFFFFFFFFFFFF;
     value_type _eui{ UninitializedIdentifierValue };
 };
+
+#endif /* COMPONENTS_ATDECC_INCLUDE_UNIQUEIDENTIFIER_HPP_ */

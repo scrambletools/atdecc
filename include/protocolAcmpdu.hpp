@@ -15,9 +15,6 @@
 using AcmpUniqueID = uint16_t;
 using AcmpSequenceID = uint16_t;
 
-// Define a simple MAC address type
-using MacAddress = uint8_t[6];
-
 // UniquePointer type definition using the provided `UniquePointer` definition
 template <typename T>
 using UniquePointer = std::unique_ptr<T, std::function<void(T*)>>;
@@ -101,7 +98,5 @@ private:
     // Private method for destroying an ACMPDU
     void destroy() noexcept;
 };
-
-
 
 #endif /* COMPONENTS_ATDECC_INCLUDE_PROTOCOLACMPDU_HPP_ */

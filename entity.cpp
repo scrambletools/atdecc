@@ -36,7 +36,7 @@ UniqueIdentifier Entity::getEntityID() const noexcept
 void Entity::getMacAddress(MacAddress& getMacAddress) const noexcept
 {
 
-    memcpy(getMacAddress, _interfaceInformation.macAddress, 6*sizeof(uint8_t));
+    memcpy(getMacAddress.data(), _interfaceInformation.macAddress.data(), getMacAddress.size());
 }
 
 void Entity::setEntityCapabilities(EntityCapabilities const entityCapabilities) noexcept

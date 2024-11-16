@@ -1,17 +1,9 @@
-/*
- * entity.hpp
- *
- *  Created on: Sep 28, 2024
- *      Author: Dulini
- */
-
 #ifndef COMPONENTS_ATDECC_INCLUDE_ENTITY_HPP_
 #define COMPONENTS_ATDECC_INCLUDE_ENTITY_HPP_
 
-#include "protocolAcmpdu.hpp"
-#include "protocolAcmpdu.hpp"
 #pragma once
 
+#include "protocolAcmpdu.hpp"
 #include "entityEnums.hpp"
 #include "uniqueIdentifier.hpp"
 #include <cstdint>
@@ -80,7 +72,5 @@ private:
     CommonInformation _commonInformation;
     InterfaceInformation _interfaceInformation;
 };
-
-
 
 #endif /* COMPONENTS_ATDECC_INCLUDE_ENTITY_HPP_ */

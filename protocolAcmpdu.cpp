@@ -54,7 +54,7 @@ Acmpdu Acmpdu::createGetTxConnectionCommand() {
 
 // Constructor
 Acmpdu::Acmpdu() {
-    std::memset(_streamDestAddress, 0, sizeof(_streamDestAddress));
+    std::memset(_streamDestAddress.data(), 0, _streamDestAddress.size());
 }
 
 // Destructor
@@ -90,7 +90,7 @@ void Acmpdu::setListenerUniqueID(AcmpUniqueID listenerUniqueID) {
 }
 
 void Acmpdu::setStreamDestAddress(const MacAddress streamDestAddress) {
-    std::memcpy(_streamDestAddress, streamDestAddress, sizeof(_streamDestAddress));
+    std::memcpy(_streamDestAddress.data(), streamDestAddress.data(), _streamDestAddress.size());
 }
 
 void Acmpdu::setConnectionCount(uint16_t connectionCount) {
@@ -180,7 +180,7 @@ void Acmpdu::serialize(uint8_t* buffer) const {
     std::memcpy(buffer, &_listenerUniqueID, sizeof(_listenerUniqueID));
     buffer += sizeof(_listenerUniqueID);
 
-    std::memcpy(buffer, _streamDestAddress, sizeof(_streamDestAddress));
+    std::memcpy(buffer, _streamDestAddress.data(), _streamDestAddress.size());
     buffer += sizeof(_streamDestAddress);
 
     std::memcpy(buffer, &_connectionCount, sizeof(_connectionCount));
@@ -220,7 +220,7 @@ void Acmpdu::deserialize(const uint8_t* buffer, size_t length) {
     std::memcpy(&_listenerUniqueID, buffer, sizeof(_listenerUniqueID));
     buffer += sizeof(_listenerUniqueID);
 
-    std::memcpy(_streamDestAddress, buffer, sizeof(_streamDestAddress));
+    std::memcpy(_streamDestAddress.data(), buffer, _streamDestAddress.size());
     buffer += sizeof(_streamDestAddress);
 
     std::memcpy(&_connectionCount, buffer, sizeof(_connectionCount));

@@ -1,10 +1,3 @@
-/*
- * serialization.hpp
- *
- *  Created on: Oct 1, 2024
- *      Author: Dulini
- */
-
 #ifndef COMPONENTS_ATDECC_INCLUDE_SERIALIZATION_HPP_
 #define COMPONENTS_ATDECC_INCLUDE_SERIALIZATION_HPP_
 
@@ -16,6 +9,10 @@
 #include <type_traits>
 #include <array>
 #include <cstring> // memcpy
+#include "endian.hpp"
+#include "lwip/ip_addr.h"
+#include "entityModelTypes.hpp"
+#include "protocolDefines.hpp"
 
 #define TAG_S "SERIALIZATION"
 
@@ -50,15 +47,38 @@ public:
             ESP_LOGE(TAG_S, "Not enough room to serialize");
             return *this;
         }
-
+        // Copy data to buffer
         T* const ptr = reinterpret_cast<T*>(_buffer.data() + _pos);
-        *ptr = v;  // No endian conversion, assuming native order.
+        *ptr = ATDECC_PACK_TYPE(v, T);
 
+        // Advance data pointer
         _pos += sizeof(v);
+
         return *this;
     }
 
-    /** Serializes a buffer (without changing endianness) */
+    /** Serializes an AtdeccFixedString (without changing endianess) */
+	Serializer& operator<<(AtdeccFixedString const& v)
+	{
+		packBuffer(v.data(), v.size());
+		return *this;
+	}
+
+    /** Serializes a MemoryBuffer (without changing endianess) */
+	Serializer& operator<<(MemoryBuffer const& v)
+	{
+		packBuffer(v.data(), v.size());
+		return *this;
+	}
+
+	/** Serializes a MacAddress (without changing endianess) */
+	Serializer& operator<<(MacAddress const& v)
+	{
+		packBuffer(v.data(), v.size());
+		return *this;
+	}
+
+    /** Appends a raw buffer to the serialized buffer (without changing endianness) */
     Serializer& packBuffer(const void* ptr, size_t size)
     {
         if (remaining() < size)
@@ -67,8 +87,12 @@ public:
             return *this;
         }
 
+        // Copy data to buffer
         std::memcpy(_buffer.data() + _pos, ptr, size);
+
+        // Advance data pointer    
         _pos += size;
+        
         return *this;
     }
 
@@ -175,5 +199,14 @@ private:
     const void* _ptr{ nullptr };
     size_t _size{ 0 };
 };
+
+/** Ethernet frame payload minimum size */
+static constexpr size_t EthernetPayloadMinimumSize = 46;
+
+/** Serialization buffer */
+using SerBuffer = Serializer<ETHERNET_MAX_FRAME_SIZE>;
+static_assert(SerBuffer::maximum_size >= EthernetPayloadMinimumSize, "Ethernet serialization buffer must contain at least 46 bytes (minimum ethernet frame payload size)");
+/** Deserialization buffer */
+using DeserBuffer = Deserializer;
 
 #endif /* COMPONENTS_ATDECC_INCLUDE_SERIALIZATION_HPP_ */

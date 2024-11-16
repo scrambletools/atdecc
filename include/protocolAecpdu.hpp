@@ -1,12 +1,11 @@
 #ifndef COMPONENTS_ATDECC_INCLUDE_PROTOCOLAECPDU_HPP_
 #define COMPONENTS_ATDECC_INCLUDE_PROTOCOLAECPDU_HPP_
 
-
 #pragma once
 
 #include <stdint.h>
 #include <memory>
-#include "UniqueIdentifier.hpp" 
+#include "uniqueIdentifier.hpp" 
 #include "protocolDefines.hpp"
 
 /** Aecpdu common header */

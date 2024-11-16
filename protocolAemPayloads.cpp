@@ -1349,7 +1349,7 @@ Serializer<AECP_AEM_SET_STREAM_INFO_COMMAND_PAYLOAD_SIZE> serializeSetStreamInfo
     ser << streamInfo.streamFormat;
     ser << streamInfo.streamID;
     ser << streamInfo.msrpAccumulatedLatency;
-    ser.packBuffer(streamInfo.streamDestMac, 6);
+    ser.packBuffer(streamInfo.streamDestMac.data(), streamInfo.streamDestMac.size());
     ser << streamInfo.msrpFailureCode;
     ser << reserved;
     ser << streamInfo.msrpFailureBridgeID;

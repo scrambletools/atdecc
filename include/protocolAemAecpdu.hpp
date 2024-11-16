@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COMPONENTS_ATDECC_INCLUDE_PROTOCOLAEMAECPDU_HPP_
+#define COMPONENTS_ATDECC_INCLUDE_PROTOCOLAEMAECPDU_HPP_
 
 #pragma once
 
@@ -67,4 +68,4 @@ private:
     size_t _commandSpecificDataLength{ 0u };
 };
 
-
+#endif /* COMPONENTS_ATDECC_INCLUDE_PROTOCOLAEMAECPDU_HPP_ */
